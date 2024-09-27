@@ -15,7 +15,7 @@ func _ready() -> void:
 			add_child(brick)
 	
 	
-	#pass # Replace with function body.
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
