@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://p1434aqjengp"]
+
+[ext_resource type="Material" uid="uid://6w5xs28ewipw" path="res://green.tres" id="1_uljev"]
+[ext_resource type="Material" uid="uid://daba0384w31q5" path="res://purp.tres" id="2_vf54o"]
+[ext_resource type="Script" path="res://player.gd" id="3_0wcs7"]
+[ext_resource type="Script" path="res://wall.gd" id="4_yvdq0"]
+[ext_resource type="PackedScene" uid="uid://m4mmwv5wtc4" path="res://brick.tscn" id="5_omans"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_onnmv"]
+size = Vector2(100, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4antl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2014f"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_uljev")
+mesh = SubResource("PlaneMesh_onnmv")
+
+[node name="Player" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+material_override = ExtResource("2_vf54o")
+mesh = SubResource("BoxMesh_4antl")
+script = ExtResource("3_0wcs7")
+
+[node name="Turret" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0.55, -0.5)
+material_override = ExtResource("2_vf54o")
+mesh = SubResource("BoxMesh_2014f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 10)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.960556, 0, -0.278086, 0, 1, 0, 0.278086, 0, 0.960556, 0, 0, 0)
+
+[node name="Wall" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -10)
+script = ExtResource("4_yvdq0")
+brick_scene = ExtResource("5_omans")
