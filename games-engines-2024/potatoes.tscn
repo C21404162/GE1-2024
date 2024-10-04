@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://p1434aqjengp"]
+[gd_scene load_steps=13 format=3 uid="uid://p1434aqjengp"]
 
 [ext_resource type="Material" uid="uid://6w5xs28ewipw" path="res://green.tres" id="1_uljev"]
 [ext_resource type="Material" uid="uid://daba0384w31q5" path="res://purp.tres" id="2_vf54o"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://TPCamera.gd" id="5_b82sm"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="5_nsuyg"]
 [ext_resource type="PackedScene" uid="uid://m4mmwv5wtc4" path="res://brick.tscn" id="5_omans"]
+[ext_resource type="PackedScene" uid="uid://3ae7fs6rq5a3" path="res://bullet.tscn" id="6_326tg"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_onnmv"]
 size = Vector2(100, 100)
@@ -14,13 +15,19 @@ size = Vector2(100, 100)
 
 [sub_resource type="BoxMesh" id="BoxMesh_4antl"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_57p11"]
+size = Vector3(0.1, 0.1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3i2df"]
+size = Vector3(0.1, 0.1, 1)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target", "player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 5)
 script = ExtResource("5_b82sm")
-target = NodePath("../player/Marker3D")
-player = NodePath("../player")
+target = NodePath("../tank/Marker3D")
+player = NodePath("../tank")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 
@@ -42,19 +49,34 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("WorldBoundaryShape3D_ycrao")
 
-[node name="player" type="CharacterBody3D" parent="."]
+[node name="tank" type="CharacterBody3D" parent="." node_paths=PackedStringArray("bullet_spawn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("5_nsuyg")
+bullet_scene = ExtResource("6_326tg")
+bullet_spawn = NodePath("bulletspawn")
 
-[node name="Player" type="MeshInstance3D" parent="player"]
+[node name="Player" type="MeshInstance3D" parent="tank"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 material_override = ExtResource("2_vf54o")
 mesh = SubResource("BoxMesh_4antl")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tank"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="Marker3D" type="Marker3D" parent="player"]
+[node name="Marker3D" type="Marker3D" parent="tank"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.22029)
+
+[node name="turret" type="StaticBody3D" parent="tank"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02916, 0.383715)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="tank/turret"]
+mesh = SubResource("BoxMesh_57p11")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tank/turret"]
+shape = SubResource("BoxShape3D_3i2df")
+
+[node name="bulletspawn" type="Marker3D" parent="tank"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04239, 0.837104)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
