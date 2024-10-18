@@ -14,6 +14,7 @@ func _process(delta: float) -> void:
 	#position.z += speed * delta
 	#global_position.z += speed * delta
 	
+	#Movement
 	var f = Input.get_axis("move_back", "move_forward")
 	translate(Vector3(0, 0, f * delta * speed))
 	rotate_y(Input.get_axis("move_forward", "move_backward"))

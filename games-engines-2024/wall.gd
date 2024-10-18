@@ -13,6 +13,7 @@ func _ready() -> void:
 			var pos = Vector3(col, row, 0)
 			brick.position = pos
 			
+			#Colour random
 			var m = StandardMaterial3D.new()
 			var h = ((rows * cols) + col) / (float)(rows * cols)
 			m.albedo_color = Color.from_hsv(h, 1, 1)
