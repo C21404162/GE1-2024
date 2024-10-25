@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://p1434aqjengp"]
+[gd_scene load_steps=16 format=3 uid="uid://p1434aqjengp"]
 
 [ext_resource type="Material" uid="uid://6w5xs28ewipw" path="res://green.tres" id="1_uljev"]
 [ext_resource type="Material" uid="uid://daba0384w31q5" path="res://purp.tres" id="2_vf54o"]
@@ -30,6 +30,9 @@ size = Vector3(0.1, 0.1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3i2df"]
 size = Vector3(0.1, 0.1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ftg7v"]
+albedo_color = Color(0.941263, 0.941263, 0.941263, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -90,3 +93,8 @@ shape = SubResource("BoxShape3D_3i2df")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04239, 0.837104)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49909, -0.0783379, 6.17736)
+use_collision = true
+material = SubResource("StandardMaterial3D_ftg7v")
