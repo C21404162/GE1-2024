@@ -22,7 +22,7 @@ albedo_color = Color(0.968418, 0, 0, 1)
 material = SubResource("StandardMaterial3D_r1122")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cryn5"]
-albedo_color = Color(1, 0, 0, 1)
+albedo_color = Color(0.513577, 0.141952, 0.141952, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_57p11"]
 material = SubResource("StandardMaterial3D_cryn5")
