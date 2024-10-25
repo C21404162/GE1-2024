@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://p1434aqjengp"]
+[gd_scene load_steps=15 format=3 uid="uid://p1434aqjengp"]
 
 [ext_resource type="Material" uid="uid://6w5xs28ewipw" path="res://green.tres" id="1_uljev"]
 [ext_resource type="Material" uid="uid://daba0384w31q5" path="res://purp.tres" id="2_vf54o"]
@@ -15,9 +15,17 @@ size = Vector2(100, 100)
 [sub_resource type="Resource" id="Resource_htbtr"]
 metadata/__load_path__ = "res://bullet.tscn"
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r1122"]
+albedo_color = Color(0.968418, 0, 0, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_4antl"]
+material = SubResource("StandardMaterial3D_r1122")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cryn5"]
+albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_57p11"]
+material = SubResource("StandardMaterial3D_cryn5")
 size = Vector3(0.1, 0.1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3i2df"]
