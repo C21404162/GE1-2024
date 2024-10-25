@@ -1,6 +1,5 @@
 extends Node3D
 
-
 @export var brick_scene:PackedScene
 @export var rows = 10
 @export var cols = 10
@@ -23,9 +22,7 @@ func _ready() -> void:
 			
 			add_child(brick)
 	
-	
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

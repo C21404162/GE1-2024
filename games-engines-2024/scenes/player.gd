@@ -4,15 +4,12 @@ extends CharacterBody3D
 @export var speed:float = 10
 @export var rot_speed = 180.0
 
-
 @export var bullet_scene:PackedScene
 @export var bullet_spawn:Node3D
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -36,16 +33,6 @@ func _physics_process(delta: float) -> void:
 	# rotate_y(deg_to_rad(rot_speed) * delta)
 	# rotate_x(deg_to_rad(rot_speed) * delta)
 	
-	#DebugDraw2D.set_text("position", position)
-	#DebugDraw2D.set_text("global_position", position)
-	#DebugDraw2D.set_text("basis.x", transform.basis.x)
-	#DebugDraw2D.set_text("basis.y", transform.basis.y)
-	#DebugDraw2D.set_text("basis.z", transform.basis.z)
-	#
-	#DebugDraw2D.set_text("glo basis.x", global_transform.basis.x)
-	#DebugDraw2D.set_text("glo basis.y", global_transform.basis.y)
-	#DebugDraw2D.set_text("glo basis.z", global_transform.basis.z)
-	
 	if Input.is_action_pressed("shoot"):
 		var bullet = bullet_scene.instantiate()
 		bullet.global_position = bullet_spawn.global_position
@@ -53,5 +40,4 @@ func _physics_process(delta: float) -> void:
 		
 		get_parent().add_child(bullet)
 		
-	
 	pass
