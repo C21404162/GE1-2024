@@ -22,6 +22,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 190, 0)
 size = Vector3(1, 380, 1)
 
 [node name="coin1" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47393, 380, 0)
 height = 0.1
 script = ExtResource("1_27srv")
 
