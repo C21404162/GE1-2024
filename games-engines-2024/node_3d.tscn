@@ -1,13 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://cn8flogbkhg8y"]
+[gd_scene load_steps=9 format=3 uid="uid://cn8flogbkhg8y"]
 
 [ext_resource type="Script" path="res://coin_1.gd" id="1_27srv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_teyvn"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_jyrpc"]
+sky_material = SubResource("ProceduralSkyMaterial_teyvn")
+
+[sub_resource type="Environment" id="Environment_w6dw0"]
+background_mode = 2
+sky = SubResource("Sky_jyrpc")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_mpgg6"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2blj6"]
 size = Vector2(100, 100)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l4p3r"]
+albedo_color = Color(0.574675, 0.21553, 0.21553, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rri3i"]
+albedo_color = Color(0.886954, 0.697935, 0.210154, 1)
+
 [node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_w6dw0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -20,9 +46,11 @@ mesh = SubResource("PlaneMesh_2blj6")
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 190, 0)
 size = Vector3(1, 380, 1)
+material = SubResource("StandardMaterial3D_l4p3r")
 
 [node name="coin1" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47393, 380, 0)
+material_override = SubResource("StandardMaterial3D_rri3i")
 height = 0.1
 script = ExtResource("1_27srv")
 
